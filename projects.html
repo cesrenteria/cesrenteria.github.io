@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects • Cesar Renteria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a class="logo" href="./index.html">Cesar Renteria</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">Theme 🌑</button>
+      </div>
+      <nav class="nav">
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <ul class="nav-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a class="active" href="./projects.html">Projects</a></li>
+          <li><a href="./resume.html">Resume</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1>Projects</h1>
+      <p class="lead">Selected work showcasing engineering, design, and delivery.</p>
+      <div id="all-projects" class="grid"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Cesar Renteria</p>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+  <script src="./js/projects.js?v=1735680300"></script>
+  <script>
+    loadProjects({ targetId: 'all-projects' });
+  </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suspension Brackets • Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css" />
+  <style>
+    .project-hero { padding: 32px 0; }
+    .slider { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; max-width: 900px; margin: 0 auto; }
+    .slide { display: none; }
+    .slide.active { display: block; }
+    .slide img { display: block; width: 100%; height: auto; max-height: 60vh; object-fit: contain; }
+    .controls { display: flex; gap: 8px; align-items: center; padding: 10px; justify-content: space-between; }
+    .controls-left { display: flex; gap: 8px; align-items: center; }
+    .controls button { padding: 8px 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 8px; }
+    .thumbs { display: flex; gap: 8px; padding: 10px; overflow-x: auto; }
+    .thumbs img { width: 80px; height: 56px; object-fit: cover; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; opacity: 0.8; }
+    .thumbs img.active { outline: 2px solid var(--primary); opacity: 1; }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 100; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a class="logo" href="./index.html">Cesar Renteria</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">Theme 🌑</button>
+      </div>
+      <nav class="nav">
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <ul class="nav-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./resume.html">Resume</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-hero">
+      <div class="container">
+        <h1>Suspension Brackets</h1>
+        <p class="lead">High‑volume brackets for suspension assemblies (like A‑arms). We machine from long bar stock, chop and pair segments, then finish‑mill. Thin parts with tight fits—sometimes with swirly textures to keep it fun.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="slider" aria-label="Project images slideshow">
+          <div id="slides"></div>
+          <div class="controls">
+            <div class="controls-left">
+              <button id="prevBtn" aria-label="Previous image">◀ Prev</button>
+              <button id="nextBtn" aria-label="Next image">Next ▶</button>
+              <button id="playPauseBtn" aria-label="Play or pause">Play ▷</button>
+            </div>
+            <span id="status" class="lead"></span>
+          </div>
+          <div id="thumbs" class="thumbs" aria-label="Thumbnails"></div>
+        </div>
+
+        <div class="section" style="padding-top:24px;">
+          <h2>Process & Notes</h2>
+          <p>Workflow: roughing from bar stock, segmentation and pairing, fixturing for thin parts, and finish‑milling strategies to maintain clean surfaces and consistent geometry.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <img id="lightboxImg" src="" alt="Preview">
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Cesar Renteria</p>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+  <script>
+    // Build image list for Brackets (1..22) in ascending order
+    const encoded = n => `./images/Brackets/Brackets%20${n}.jpg`;
+    let IMAGES = Array.from({length: 22}, (_, i) => encoded(i + 1));
+
+    // Start on the thumbnail image used for the card (22)
+    const initialSrc = encoded(22);
+    let idx = IMAGES.findIndex(src => src === initialSrc);
+    if (idx < 0) idx = 0;
+
+    const slidesHost = document.getElementById('slides');
+    const thumbsHost = document.getElementById('thumbs');
+    slidesHost.innerHTML = IMAGES.map((src, i) => `\n      <div class="slide${i===idx?' active':''}"><img src="${src}" alt="Brackets image ${i+1}"></div>`).join('');
+    thumbsHost.innerHTML = IMAGES.map((src, i) => `\n      <img data-idx="${i}" src="${src}" alt="Thumb ${i+1}">`).join('');
+
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const thumbs = Array.from(document.querySelectorAll('#thumbs img'));
+    const statusEl = document.getElementById('status');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    let playing = false;
+    let timer = null;
+
+    function render() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+      thumbs.forEach((t, i) => t.classList.toggle('active', i === idx));
+      statusEl.textContent = `Image ${idx + 1} / ${slides.length}`;
+      playPauseBtn.textContent = playing ? 'Pause ❚❚' : 'Play ▷';
+    }
+    function prev(){ idx = (idx - 1 + slides.length) % slides.length; render(); }
+    function next(){ idx = (idx + 1) % slides.length; render(); }
+    function play(){ if (!playing){ playing = true; timer = setInterval(next, 3000); render(); } }
+    function pause(){ playing = false; clearInterval(timer); timer = null; render(); }
+
+    prevBtn.addEventListener('click', () => { pause(); prev(); });
+    nextBtn.addEventListener('click', () => { pause(); next(); });
+    playPauseBtn.addEventListener('click', () => { playing ? pause() : play(); });
+
+    thumbs.forEach(t => t.addEventListener('click', () => { pause(); idx = Number(t.dataset.idx); render(); }));
+
+    slides.forEach(s => {
+      const img = s.querySelector('img');
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('open');
+      });
+    });
+    lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+      if (e.key === 'ArrowLeft') { pause(); prev(); }
+      if (e.key === 'ArrowRight') { pause(); next(); }
+    });
+
+    render();
+  </script>
+</body>
+</html>

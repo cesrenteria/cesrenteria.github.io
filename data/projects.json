@@ -1,0 +1,99 @@
+[
+  {
+    "title": "Rear Upright (USC FSAE)",
+    "description": "CNC‑machined rear upright prototype; CAM, fixturing, and verification.",
+    "tech": ["CNC", "Mastercam", "HAAS VF2"],
+    "repo": "",
+    "demo": "",
+    "link": "./RearUpright.html",
+    "image": "./images/Rear%20Upright/Rear%201.jpg",
+    "imageAlt": "Rear Upright prototype"
+  },
+  {
+    "title": "EV Diff Mounts (USC FSAE EV)",
+    "description": "Design and CNC machining of EV differential mounting brackets; CAM strategy, fixturing, and validation.",
+    "tech": ["CNC", "Mastercam", "Fixturing"],
+    "repo": "",
+    "demo": "",
+    "link": "./EVDiffMounts.html",
+    "image": "./images/EV%20Diff%20Mounts/EV%20Diff%20Mounts%2026.jpg",
+    "imageAlt": "EV Diff Mounts 26"
+  },
+  {
+    "title": "LPL Rocket Engine Component (USC)",
+    "description": "3D‑printed rocket engine component for the Liquid Propulsion Lab; creative workholding and complete machining on a 3‑axis CNC.",
+    "tech": ["CNC", "3‑axis", "Workholding", "3D printing"],
+    "repo": "",
+    "demo": "",
+    "link": "./LPL.html",
+    "image": "./images/LPL/LPL%2068.jpg",
+    "imageAlt": "LPL 68 – Rocket engine component"
+  },
+  {
+    "title": "Oil Pan",
+    "description": "Engine oil pan with tall baffles to reduce swashing; geometry required multiple step‑downs for a consistent surface finish.",
+    "tech": ["CNC", "Fixturing", "Step‑downs"],
+    "repo": "",
+    "demo": "",
+    "link": "./OilPan.html",
+    "image": "./images/Oil%20Pan/Oil%20Pan%2013.jpg",
+    "imageAlt": "Oil Pan component"
+  },
+  {
+    "title": "Mini Front Upright (4th Axis)",
+    "description": "Fun 4th‑axis machining of a mini front upright; creative workholding and indexed toolpaths.",
+    "tech": ["CNC", "4th‑axis", "Workholding"],
+    "repo": "",
+    "demo": "",
+    "link": "./FourthAxis.html",
+    "image": "./images/4th%20Axis/4th%20Axis%2010.jpg",
+    "imageAlt": "4th Axis 10 – Mini front upright"
+  },
+  {
+    "title": "Bell Cranks (Race Component)",
+    "description": "Waterjetted then finish‑milled bell cranks that interface with dampers/shocks. Thin parts with swirly toolpath textures—fun and challenging workholding.",
+    "tech": ["CNC", "Waterjet", "Finishing"],
+    "repo": "",
+    "demo": "",
+    "link": "./BellCrank.html",
+    "image": "./images/Bell%20Crank/Bell%20Crank%206.jpg",
+    "imageAlt": "Bell Crank 6"
+  },
+  {
+    "title": "ARC Motor Hub (Advanced Combat Robotics)",
+    "description": "Motor hub for ARC’s weapon system—great engineering design, CNC‑milled with simple soft jaws and tight bearing surface tolerances. Nicknamed the ‘Pokeball’.",
+    "tech": ["CNC", "Soft Jaws", "Tight Tolerances"],
+    "repo": "",
+    "demo": "",
+    "link": "./ARC.html",
+    "image": "./images/ARC/ARC%2011.jpg",
+    "imageAlt": "ARC 11 – Motor hub (Pokeball)"
+  },
+  {
+    "title": "Suspension Brackets",
+    "description": "High‑volume suspension brackets (e.g., A‑arm interfaces). Machined from long bar stock, segmented, then finish‑milled. Thin parts; fun textures and efficient workflows.",
+    "tech": ["CNC", "Bar Stock", "Finishing"],
+    "repo": "",
+    "demo": "",
+    "link": "./Brackets.html",
+    "image": "./images/Brackets/Brackets%2022.jpg",
+    "imageAlt": "Brackets 22"
+  },
+  {
+    "title": "Misc. Components",
+    "description": "A grab‑bag of machining work—locknuts, IC diff mounts, coolant housing, brake pedal, and more. Too many parts to count; a fun mix of fixtures, textures, and finishes.",
+    "tech": ["CNC", "Workholding", "Finishing"],
+    "repo": "",
+    "demo": "",
+    "link": "./Misc.html",
+    "image": "./images/Misc/gpt.png",
+    "imageAlt": "Misc – GPT thumbnail"
+  },
+  {
+    "title": "Automation Scripts",
+    "description": "Collection of small utilities that automate repeatable tasks on Windows.",
+    "tech": ["PowerShell", "Python"],
+    "repo": "",
+    "demo": ""
+  }
+]

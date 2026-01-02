@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio • Cesar Renteria</title>
+  <meta name="description" content="Portfolio and resume of Cesar Renteria" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a class="logo" href="./index.html">Cesar Renteria</a>
+        <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">Theme 🌑</button>
+      </div>
+      <nav class="nav">
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <ul class="nav-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./resume.html">Resume</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-title">
+          <h1>CNC Manufacturing Specialist & Builder</h1>
+          <img src="./selfie/anime.png" class="avatar" alt="Cesar Renteria avatar" width="64" height="64" loading="lazy" />
+        </div>
+        <h2>About Me</h2>
+<p>I design and implement practical manufacturing solutions—CNC tooling, prototypes, and production workflows—grounded in real shop-floor experience.</p>
+
+<p>Currently, I work at the University of Southern California as an Experimental Machinist, managing the CNC lab and supporting engineering design teams and research labs across campus.</p>
+
+<p>With deep expertise in CAD/CAM software and years of hands-on machining, I bring both technical precision and practical know-how to every project—what I like to call "the secret sauce."</p>
+
+<p>I enjoy collaborating with cross-functional teams and sharing knowledge about CNC processes and best practices.</p>
+
+<p>Outside the shop, I'm exploring AI-driven tools to boost productivity, tinkering with Arduinos, and diving into new technical topics.</p>
+
+<p>This site showcases selected projects, experience, and ways to get in touch.</p>
+        <div class="cta">
+          <a class="btn primary" href="./projects.html">View Projects</a>
+          <a class="btn" href="./resume.html">View Resume</a>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section class="section">
+      <div class="container">
+        <h2>Featured Projects</h2>
+        <div id="featured-projects" class="grid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Skills Snapshot</h2>
+        <ul class="skills">
+          <li>CNC</li>
+          <li>Design</li>
+          <li>Machining Processes</li>
+          <li>Python</li>
+          <li>Automation</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Cesar Renteria • <a href="./contact.html">Contact</a></p>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+  <script src="./js/projects.js?v=1735680300"></script>
+  <script>
+    // Render top 3 projects on homepage
+    loadProjects({ targetId: 'featured-projects', limit: 3 });
+  </script>
+</body>
+</html>
