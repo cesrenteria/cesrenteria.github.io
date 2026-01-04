@@ -87,8 +87,8 @@
   <script src="./js/main.js"></script>
   <script src="./js/projects.js?v=1735680300"></script>
   <script>
-    // Render top 3 projects on homepage
-    loadProjects({ targetId: 'featured-projects', limit: 3 });
+    // Render featured projects on homepage (limited to 3)
+    loadProjects({ targetId: 'featured-projects', onlyFeatured: true, limit: 3 });
   </script>
 </body>
 </html>

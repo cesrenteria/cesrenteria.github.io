@@ -43,7 +43,8 @@
   <script src="./js/main.js"></script>
   <script src="./js/projects.js?v=1735680300"></script>
   <script>
-    loadProjects({ targetId: 'all-projects' });
+    // Exclude featured items (shown on home) and show Misc. Components first
+    loadProjects({ targetId: 'all-projects', excludeFeatured: true, prioritizeTitle: 'Misc. Components' });
   </script>
 </body>
 </html>

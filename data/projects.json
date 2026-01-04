@@ -7,17 +7,19 @@
     "demo": "",
     "link": "./RearUpright.html",
     "image": "./images/Rear%20Upright/Rear%201.jpg",
-    "imageAlt": "Rear Upright prototype"
+    "imageAlt": "Rear Upright prototype",
+    "featured": true
   },
   {
     "title": "EV Diff Mounts (USC FSAE EV)",
-    "description": "Design and CNC machining of EV differential mounting brackets; CAM strategy, fixturing, and validation.",
+    "description": "CNC machining of EV Differential Mounting brackets; CAM strategy, fixturing, and validation.",
     "tech": ["CNC", "Mastercam", "Fixturing"],
     "repo": "",
     "demo": "",
     "link": "./EVDiffMounts.html",
     "image": "./images/EV%20Diff%20Mounts/EV%20Diff%20Mounts%2026.jpg",
-    "imageAlt": "EV Diff Mounts 26"
+    "imageAlt": "EV Diff Mounts 26",
+    "featured": true
   },
   {
     "title": "LPL Rocket Engine Component (USC)",
@@ -27,7 +29,8 @@
     "demo": "",
     "link": "./LPL.html",
     "image": "./images/LPL/LPL%2068.jpg",
-    "imageAlt": "LPL 68 – Rocket engine component"
+    "imageAlt": "LPL 68 – Rocket engine component",
+    "featured": true
   },
   {
     "title": "Oil Pan",

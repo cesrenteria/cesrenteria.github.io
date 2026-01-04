@@ -29,11 +29,41 @@ function projectCard(p) {
   `;
 }
 
-async function loadProjects({ targetId, limit } = {}) {
+async function loadProjects({ targetId, limit, excludeFirst = 0, prioritizeTitle, onlyFeatured = false, excludeFeatured = false } = {}) {
   const target = document.getElementById(targetId);
   if (!target) return;
   const projects = await fetchProjects();
-  const list = limit ? projects.slice(0, limit) : projects;
+
+  // Start with full list
+  let list = projects.slice();
+
+  // Apply featured filters
+  if (onlyFeatured) {
+    list = list.filter(p => p.featured === true);
+  } else if (excludeFeatured) {
+    list = list.filter(p => p.featured !== true);
+  }
+
+  // Optionally exclude the first N items (legacy support)
+  if (excludeFirst && excludeFirst > 0) {
+    list = list.slice(excludeFirst);
+  }
+
+  // Move specific title(s) to the front if requested
+  if (prioritizeTitle) {
+    const titles = Array.isArray(prioritizeTitle) ? prioritizeTitle : [prioritizeTitle];
+    const prioritized = [];
+    const remaining = [];
+    for (const p of list) {
+      if (titles.includes(p.title)) prioritized.push(p);
+      else remaining.push(p);
+    }
+    list = prioritized.concat(remaining);
+  }
+
+  // Apply limit last
+  if (limit && limit > 0) list = list.slice(0, limit);
+
   target.innerHTML = list.map(projectCard).join('');
 }
 
