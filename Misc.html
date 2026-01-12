@@ -89,13 +89,14 @@
     const thumb = './images/Misc/gpt.png';
 
     // Build lists from folders in ascending order
+    const misc = Array.from({length: 25}, (_, i) => `./images/Misc/Misc%20${i+1}.jpg`);
     const locknuts = Array.from({length: 3}, (_, i) => `./images/Locknuts/Locknuts%20${i+1}.jpg`);
     const icdiffs = Array.from({length: 7}, (_, i) => `./images/IC%20Diff%20Mounts/Diff%20Mounts%20${i+1}.jpg`);
     const coolant = Array.from({length: 6}, (_, i) => `./images/Coolant%20Housing/Coolant%20Housing%20${i+1}.jpg`);
     const brake = Array.from({length: 15}, (_, i) => `./images/Brake%20Pedal/Brake%20Pedal%20${i+1}.jpg`);
 
-    // Combine: thumbnail first, then each set
-    let IMAGES = [thumb, ...locknuts, ...icdiffs, ...coolant, ...brake];
+    // Combine: thumbnail first, then Misc set, then each set
+    let IMAGES = [thumb, ...misc, ...locknuts, ...icdiffs, ...coolant, ...brake];
 
     // Start on the thumbnail image
     let idx = 0;
