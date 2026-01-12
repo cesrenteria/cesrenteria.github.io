@@ -41,10 +41,17 @@
   </footer>
 
   <script src="./js/main.js"></script>
-  <script src="./js/projects.js?v=1735680300"></script>
+  <script src="./js/projects.js?v=1736534401"></script>
   <script>
-    // Exclude featured items (shown on home) and show Misc. Components first
-    loadProjects({ targetId: 'all-projects', excludeFeatured: true, prioritizeTitle: 'Misc. Components' });
+    // Exclude featured items (shown on home), show Misc. Components first,
+    // place Micro Machining after Oil Pan, and move Automation Scripts to last
+    loadProjects({
+      targetId: 'all-projects',
+      excludeFeatured: true,
+      prioritizeTitle: 'Misc. Components',
+      placeAfter: { title: 'Micro Machining', after: 'Oil Pan' },
+      moveToEnd: 'Automation Scripts'
+    });
   </script>
 </body>
 </html>

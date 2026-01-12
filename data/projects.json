@@ -99,4 +99,15 @@
     "repo": "",
     "demo": ""
   }
+  ,
+  {
+    "title": "Micro Machining",
+    "description": "High‑precision micro‑machining on multiaxis platforms (Willemin Macodel, Microlution MR4) programmed in ESPRIT; digital‑twin verification to ensure precision and avoid crashes.",
+    "tech": ["Willemin Macodel", "Microlution MR4", "ESPRIT", "Multiaxis"],
+    "repo": "",
+    "demo": "",
+    "link": "./MicroMachining.html",
+    "image": "./images/Micro%20Machining/Micro%207.jpg",
+    "imageAlt": "Micro Machining — image 7"
+  }
 ]

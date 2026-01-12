@@ -29,7 +29,7 @@ function projectCard(p) {
   `;
 }
 
-async function loadProjects({ targetId, limit, excludeFirst = 0, prioritizeTitle, onlyFeatured = false, excludeFeatured = false } = {}) {
+async function loadProjects({ targetId, limit, excludeFirst = 0, prioritizeTitle, moveToEnd, placeAfter, onlyFeatured = false, excludeFeatured = false } = {}) {
   const target = document.getElementById(targetId);
   if (!target) return;
   const projects = await fetchProjects();
@@ -59,6 +59,33 @@ async function loadProjects({ targetId, limit, excludeFirst = 0, prioritizeTitle
       else remaining.push(p);
     }
     list = prioritized.concat(remaining);
+  }
+
+  // Place a title immediately after another title, if requested
+  if (placeAfter && placeAfter.title && placeAfter.after && placeAfter.title !== placeAfter.after) {
+    const srcIdx = list.findIndex(p => p.title === placeAfter.title);
+    if (srcIdx !== -1) {
+      const [item] = list.splice(srcIdx, 1);
+      const newAfterIdx = list.findIndex(p => p.title === placeAfter.after);
+      if (newAfterIdx !== -1) {
+        list.splice(newAfterIdx + 1, 0, item);
+      } else {
+        // If the `after` item isn't found, put the item back where it was
+        list.splice(srcIdx, 0, item);
+      }
+    }
+  }
+
+  // Move specific title(s) to the end if requested
+  if (moveToEnd) {
+    const titles = Array.isArray(moveToEnd) ? moveToEnd : [moveToEnd];
+    const endItems = [];
+    const middle = [];
+    for (const p of list) {
+      if (titles.includes(p.title)) endItems.push(p);
+      else middle.push(p);
+    }
+    list = middle.concat(endItems);
   }
 
   // Apply limit last
